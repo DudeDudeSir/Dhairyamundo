@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ധൈര്യമുണ്ടോ? | Dhairyamundo?</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;700;900&family=Orbitron:wght@700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="home-body">
+
+  <!-- Animated background particles -->
+  <div class="bg-particles" id="bgParticles"></div>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="nav-logo">⚡ <span class="ml-text">ധൈര്യമുണ്ടോ?</span></div>
+    <div class="nav-links">
+      <a href="leaderboard.html">🏆 <span class="ml-text">ലീഡർബോർഡ്</span></a>
+      <a href="about.html">ℹ️ About</a>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <!-- Mascot -->
+    <div class="mascot-container" id="mascot">
+      <div class="mascot-body">
+        <div class="mascot-face">
+          <div class="mascot-eyes">
+            <div class="eye left-eye"><div class="pupil"></div></div>
+            <div class="eye right-eye"><div class="pupil"></div></div>
+          </div>
+          <div class="mascot-mouth">😈</div>
+        </div>
+        <div class="mascot-arms">
+          <span class="arm left-arm">👋</span>
+          <span class="arm right-arm">👋</span>
+        </div>
+      </div>
+      <div class="mascot-speech-bubble" id="mascotSpeech">
+        <span class="ml-text">ഇത് കളിക്കാൻ ധൈര്യമുണ്ടോ? 😏</span>
+      </div>
+    </div>
+
+    <!-- Title -->
+    <div class="hero-title-wrap">
+      <h1 class="hero-title glow-text">ധൈര്യമുണ്ടോ?</h1>
+      <p class="hero-subtitle ml-text">ഇത് കളിക്കാൻ ധൈര്യമുണ്ടോ?</p>
+      <p class="hero-en">Do you have the courage to play?</p>
+    </div>
+
+    <!-- CTA Buttons -->
+    <div class="hero-cta">
+      <a href="game.html" class="btn-play pulse-glow" id="playBtn">
+        <span class="btn-icon">🎮</span>
+        <span class="ml-text">കളിക്കാം!</span>
+        <span class="btn-en">Let's Play!</span>
+      </a>
+      <a href="leaderboard.html" class="btn-secondary">
+        🏆 <span class="ml-text">ലീഡർബോർഡ്</span>
+      </a>
+    </div>
+
+    <!-- Stats bar -->
+    <div class="stats-bar">
+      <div class="stat-item">
+        <span class="stat-num" id="statPlayers">0</span>
+        <span class="stat-label ml-text">കളിക്കാർ</span>
+        <span class="stat-en">Players</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num">20</span>
+        <span class="stat-label ml-text">ഘട്ടങ്ങൾ</span>
+        <span class="stat-en">Stages</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num" id="statFinishers">0</span>
+        <span class="stat-label ml-text">ജേതാക്കൾ</span>
+        <span class="stat-en">Winners</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAGE PREVIEW -->
+  <section class="stages-preview">
+    <h2 class="section-title">
+      <span class="ml-text">നിങ്ങൾ നേരിടേണ്ടത്...</span>
+      <span class="section-en">What Awaits You...</span>
+    </h2>
+    <div class="stage-cards-grid">
+      <div class="stage-card">
+        <div class="card-icon">😰</div>
+        <div class="card-title ml-text">ഭയം</div>
+        <div class="card-en">Fear</div>
+        <p class="ml-text">ഞെട്ടി ചാടും!</p>
+      </div>
+      <div class="stage-card">
+        <div class="card-icon">🎭</div>
+        <div class="card-title ml-text">തന്ത്രം</div>
+        <div class="card-en">Tricks</div>
+        <p class="ml-text">പറ്റിക്കലുകൾ!</p>
+      </div>
+      <div class="stage-card">
+        <div class="card-icon">🧠</div>
+        <div class="card-title ml-text">ബുദ്ധി</div>
+        <div class="card-en">Logic</div>
+        <p class="ml-text">ചിന്തിക്കൂ!</p>
+      </div>
+      <div class="stage-card">
+        <div class="card-icon">⚡</div>
+        <div class="card-title ml-text">വേഗം</div>
+        <div class="card-en">Speed</div>
+        <p class="ml-text">വേഗം ക്ലിക്ക്!</p>
+      </div>
+      <div class="stage-card">
+        <div class="card-icon">😂</div>
+        <div class="card-title ml-text">ചിരി</div>
+        <div class="card-en">Humor</div>
+        <p class="ml-text">ചിരിക്കും!</p>
+      </div>
+      <div class="stage-card">
+        <div class="card-icon">🏆</div>
+        <div class="card-title ml-text">വിജയം</div>
+        <div class="card-en">Victory</div>
+        <p class="ml-text">ജയിക്കൂ!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WARNING SECTION -->
+  <section class="warning-section">
+    <div class="warning-box">
+      <div class="warning-icon">⚠️</div>
+      <h3 class="ml-text">മുന്നറിയിപ്പ്!</h3>
+      <p class="ml-text">ഈ ഗെയിം കളിക്കുമ്പോൾ ഞെട്ടൽ, ചിരി, നിരാശ ഇവ ഉണ്ടാകാം.</p>
+      <p class="warning-en">This game may cause: shock, laughter, and frustration. You've been warned! 😂</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-mascot">😈</div>
+    <p class="ml-text footer-tagline">ധൈര്യമുണ്ടെങ്കിൽ കളിക്കൂ!</p>
+    <p class="footer-en">Made with 😂 in Kerala | © 2025 Dhairyamundo</p>
+    <div class="footer-links">
+      <a href="leaderboard.html">🏆 Leaderboard</a>
+      <a href="about.html">About</a>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
