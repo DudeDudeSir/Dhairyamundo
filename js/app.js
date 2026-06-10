@@ -4,10 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const startModal = document.getElementById("startModal");
     const yesBtn = document.getElementById("yesBtn");
     const noBtn = document.getElementById("noBtn");
-    
-
-scareImage.style.display = "flex";
-scareSound.play();
 
     if(playBtn){
         playBtn.addEventListener("click", () => {
