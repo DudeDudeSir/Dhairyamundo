@@ -258,31 +258,6 @@ function triggerJumpScare() {
     const scare =
         document.getElementById("jumpscareImage");
 
-    // Sound
-    const scareSound =
-        new Audio("assets/sounds/jumpscare.mp3");
-
-    scare.style.display = "flex";
-
-    scareSound.volume = 5.0;
-
-    scareSound.play();
-
-    setTimeout(() => {
-
-        scare.style.display = "none";
-
-        loadStage6();
-
-    }, 1500);
-
-}
-
-function triggerJumpScare() {
-
-    const scare =
-        document.getElementById("jumpscareImage");
-
     if (!scare) {
 
         alert("😱 BOOO!");
@@ -317,7 +292,32 @@ function triggerJumpScare() {
     }, 1500);
 
 }
-function loadStage6(){
+    function triggerJumpScare() {
+
+    const scare =
+        document.getElementById("jumpscareImage");
+
+    // Sound
+    const scareSound =
+        new Audio("assets/sounds/jumpscare.mp3");
+
+    scare.style.display = "flex";
+
+    scareSound.volume = 5.0;
+
+    scareSound.play();
+
+    setTimeout(() => {
+
+        scare.style.display = "none";
+
+        loadStage6();
+
+    }, 1500);
+
+}
+/* Start Game */
+    function loadStage6(){
 
     currentStage = 6;
     updateStage();
@@ -384,8 +384,4 @@ function loadStage6(){
     });
 
 }
-/* Start Game */
 
-loadStage1();
-
-};
