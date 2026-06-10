@@ -7,17 +7,17 @@ const mascotBubble = document.getElementById("mascotGameBubble");
 let currentStage = 1;
 let playerName = "";
 
-loadStage1();
-
 function updateStage() {
     stageCounter.textContent = currentStage + " / 20";
 }
 
-function mascot(text){
+function mascot(text) {
     mascotBubble.innerHTML = text;
 }
 
-function loadStage1(){
+/* ---------------- STAGE 1 ---------------- */
+
+function loadStage1() {
 
     currentStage = 1;
     updateStage();
@@ -44,24 +44,24 @@ function loadStage1(){
     `;
 
     document
-      .getElementById("continueBtn")
-      .addEventListener("click", () => {
+        .getElementById("continueBtn")
+        .onclick = () => {
 
         playerName =
-          document.getElementById("nameInput").value;
+            document.getElementById("nameInput").value;
 
-        if(playerName.trim() === ""){
+        if (playerName.trim() === "") {
             alert("പേര് എഴുതൂ 😅");
             return;
         }
 
         loadStage2();
-
-      });
-
+    };
 }
 
-function loadStage2(){
+/* ---------------- STAGE 2 ---------------- */
+
+function loadStage2() {
 
     currentStage = 2;
     updateStage();
@@ -69,56 +69,52 @@ function loadStage2(){
     mascot("ഈ ബട്ടൺ പിടിക്കാമോ? 😈");
 
     stageArea.innerHTML = `
-        <div class="stage-box">
+        <div class="stage-box" style="height:300px;position:relative;">
 
             <h2>ഹലോ ${playerName}</h2>
 
             <button
-            id="moveBtn"
-            class="game-btn"
-            style="
-            position:absolute;
-            left:40%;
-            top:50%;">
-            ക്ലിക്ക് ചെയ്യൂ
+                id="moveBtn"
+                class="game-btn"
+                style="
+                    position:absolute;
+                    left:40%;
+                    top:50%;
+                ">
+                ക്ലിക്ക് ചെയ്യൂ
             </button>
 
         </div>
     `;
 
-    const btn =
-      document.getElementById("moveBtn");
-
-    let count = 0;
+    const btn = document.getElementById("moveBtn");
 
     btn.addEventListener("mouseover", () => {
 
         btn.style.left =
-          Math.random()*70 + "%";
+            Math.random() * 70 + "%";
 
         btn.style.top =
-          Math.random()*60 + "%";
+            Math.random() * 60 + "%";
 
     });
 
     btn.addEventListener("click", () => {
 
-        count++;
-
-        if(count >= 1){
-            loadStage3();
-        }
+        loadStage3();
 
     });
 
 }
 
-function loadStage3(){
+/* ---------------- STAGE 3 ---------------- */
+
+function loadStage3() {
 
     currentStage = 3;
     updateStage();
 
-    mascot("അയ്യേ നിന്നെ പറ്റിച്ചേ 😂");
+    mascot("അയ്യേ! നിന്നെ പറ്റിച്ചേ 😂");
 
     stageArea.innerHTML = `
         <div class="stage-box">
@@ -128,10 +124,10 @@ function loadStage3(){
             <h2>അയ്യേ! നിന്നെ പറ്റിച്ചേ</h2>
 
             <button
-            id="nextBtn"
-            class="game-btn">
+                id="nextBtn"
+                class="game-btn">
 
-            മുന്നോട്ട്
+                മുന്നോട്ട്
 
             </button>
 
@@ -139,12 +135,14 @@ function loadStage3(){
     `;
 
     document
-      .getElementById("nextBtn")
-      .onclick = loadStage4;
+        .getElementById("nextBtn")
+        .onclick = loadStage4;
 
 }
 
-function loadStage4(){
+/* ---------------- STAGE 4 ---------------- */
+
+function loadStage4() {
 
     currentStage = 4;
     updateStage();
@@ -157,10 +155,10 @@ function loadStage4(){
             <h2>ഈ ബട്ടൺ അമർത്തരുത്</h2>
 
             <button
-            id="dontBtn"
-            class="game-btn">
+                id="dontBtn"
+                class="game-btn">
 
-            അമർത്തരുത്
+                അമർത്തരുത്
 
             </button>
 
@@ -168,13 +166,135 @@ function loadStage4(){
     `;
 
     document
-      .getElementById("dontBtn")
-      .onclick = () => {
+        .getElementById("dontBtn")
+        .onclick = () => {
 
         alert("😂 അതാണ് അമർത്തിയത്!");
 
-      };
+        setTimeout(() => {
+
+            loadStage5();
+
+        }, 1000);
+
+    };
 
 }
+
+/* ---------------- STAGE 5 ---------------- */
+
+function loadStage5() {
+
+    currentStage = 5;
+    updateStage();
+
+    mascot("രഹസ്യ ചലഞ്ച് ലോഡ് ചെയ്യുന്നു... 😏");
+
+    stageArea.innerHTML = `
+        <div class="stage-box">
+
+            <h2>🔒 Secret Challenge</h2>
+
+            <div style="
+                width:300px;
+                height:20px;
+                background:#333;
+                margin:auto;
+                border-radius:20px;
+                overflow:hidden;
+            ">
+
+                <div
+                    id="loadingFill"
+                    style="
+                        width:0%;
+                        height:100%;
+                        background:lime;
+                    ">
+                </div>
+
+            </div>
+
+            <h3 id="loadingText">0%</h3>
+
+        </div>
+    `;
+
+    const fill =
+        document.getElementById("loadingFill");
+
+    const text =
+        document.getElementById("loadingText");
+
+    let progress = 0;
+
+    const timer = setInterval(() => {
+
+        progress += 5;
+
+        fill.style.width = progress + "%";
+        text.innerHTML = progress + "%";
+
+        if (progress >= 100) {
+
+            clearInterval(timer);
+
+            setTimeout(() => {
+
+                triggerJumpScare();
+
+            }, 1500);
+
+        }
+
+    }, 150);
+
+}
+
+/* ---------------- JUMP SCARE ---------------- */
+
+function triggerJumpScare() {
+
+    const scare =
+        document.getElementById("jumpscareImage");
+
+    if (!scare) {
+
+        alert("😱 BOOO!");
+
+        return;
+    }
+
+    scare.style.display = "flex";
+
+    setTimeout(() => {
+
+        scare.style.display = "none";
+
+        stageArea.innerHTML = `
+            <div class="stage-box">
+
+                <h1>😂</h1>
+
+                <h2>പേടിച്ചോ?</h2>
+
+                <button
+                    class="game-btn"
+                    onclick="location.reload()">
+
+                    വീണ്ടും കളിക്കാം
+
+                </button>
+
+            </div>
+        `;
+
+    }, 1500);
+
+}
+
+/* Start Game */
+
+loadStage1();
 
 };
