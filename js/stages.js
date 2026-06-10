@@ -400,6 +400,268 @@ function loadStage7(){
     });
 
 }
+function loadStage8() {
+
+    currentStage = 8;
+    updateStage();
+
+    mascot("10 പ്രാവശ്യം ക്ലിക്ക് ചെയ്യൂ 😏");
+
+    stageArea.innerHTML = `
+        <div class="stage-box">
+
+            <h2>
+                ഈ ബട്ടൺ 10 പ്രാവശ്യം ക്ലിക്ക് ചെയ്യൂ
+            </h2>
+
+            <button
+                id="clickBtn"
+                class="game-btn">
+
+                ക്ലിക്ക്
+
+            </button>
+
+            <h3 id="counter">0 / 10</h3>
+
+        </div>
+    `;
+
+    let clicks = 0;
+
+    const btn =
+        document.getElementById("clickBtn");
+
+    const counter =
+        document.getElementById("counter");
+
+    btn.addEventListener("click", () => {
+
+        clicks++;
+
+        counter.innerHTML =
+            clicks + " / 10";
+
+        if(clicks >= 10){
+
+            stageArea.innerHTML = `
+                <div class="stage-box">
+
+                    <h1>😂</h1>
+
+                    <h2>
+                        ഞാൻ പറഞ്ഞത് ഉറക്കെ പറയാനായിരുന്നു!
+                    </h2>
+
+                    <p>
+                        വീണ്ടും പറ്റിച്ചു 😈
+                    </p>
+
+                    <button
+                        id="nextBtn8"
+                        class="game-btn">
+
+                        മുന്നോട്ട്
+
+                    </button>
+
+                </div>
+            `;
+
+            document
+                .getElementById("nextBtn8")
+                .addEventListener("click", () => {
+
+                    loadStage9();
+
+                });
+
+        }
+
+    });
+
+}
+function loadStage9() {
+
+    currentStage = 9;
+    updateStage();
+
+    mascot("പച്ച ബട്ടൺ കണ്ടെത്തൂ 😏");
+
+    let failCount = 0;
+
+    stageArea.innerHTML = `
+        <div class="stage-box">
+
+            <h2>🟢 പച്ച ബട്ടൺ കണ്ടെത്തൂ</h2>
+
+            <div style="
+                display:flex;
+                gap:15px;
+                justify-content:center;
+                margin-top:20px;
+            ">
+
+                <button id="redBtn" class="game-btn">
+                    🔴 Red
+                </button>
+
+                <button id="greenBtn" class="game-btn">
+                    🟢 Green
+                </button>
+
+                <button id="blueBtn" class="game-btn">
+                    🔵 Blue
+                </button>
+
+            </div>
+
+            <p id="failText"></p>
+
+        </div>
+    `;
+
+    const greenBtn =
+        document.getElementById("greenBtn");
+
+    const redBtn =
+        document.getElementById("redBtn");
+
+    const blueBtn =
+        document.getElementById("blueBtn");
+
+    const failText =
+        document.getElementById("failText");
+
+    function shuffleButtons() {
+
+        const parent =
+            greenBtn.parentElement;
+
+        const buttons =
+            [redBtn, greenBtn, blueBtn];
+
+        buttons.sort(() => Math.random() - 0.5);
+
+        parent.innerHTML = "";
+
+        buttons.forEach(btn => {
+            parent.appendChild(btn);
+        });
+
+    }
+
+    greenBtn.addEventListener("mouseover", () => {
+
+        failCount++;
+
+        shuffleButtons();
+
+        if(failCount >= 3){
+
+            stageArea.innerHTML = `
+                <div class="stage-box">
+
+                    <h1>😂</h1>
+
+                    <h2>
+                        ഇത്രയും എളുപ്പം ജയിക്കാൻ വിടുമോ?
+                    </h2>
+
+                    <button
+                        id="realGreen"
+                        class="game-btn">
+
+                        🟢 യഥാർത്ഥ പച്ച ബട്ടൺ
+
+                    </button>
+
+                </div>
+            `;
+
+            document
+                .getElementById("realGreen")
+                .onclick = loadStage10;
+
+        }
+
+    });
+
+}
+function loadStage10(){
+
+    currentStage = 10;
+    updateStage();
+
+    mascot("നീ റോബോട്ട് അല്ലെന്ന് തെളിയിക്കൂ 🤖");
+
+    stageArea.innerHTML = `
+        <div class="stage-box">
+
+            <h2>☑ ഞാൻ റോബോട്ട് അല്ല</h2>
+
+            <button
+                id="robotBtn"
+                class="game-btn">
+
+                Verify
+
+            </button>
+
+            <p id="robotText"></p>
+
+        </div>
+    `;
+
+    let tries = 0;
+
+    document
+        .getElementById("robotBtn")
+        .addEventListener("click", () => {
+
+            tries++;
+
+            document
+                .getElementById("robotText")
+                .innerHTML =
+                "😂 വീണ്ടും ശ്രമിക്കൂ";
+
+            if(tries >= 5){
+
+                stageArea.innerHTML = `
+                    <div class="stage-box">
+
+                        <h1>🎉</h1>
+
+                        <h2>
+                            ശരി ശരി...
+                            നീ റോബോട്ട് അല്ല 😂
+                        </h2>
+
+                        <button
+                            id="next10"
+                            class="game-btn">
+
+                            മുന്നോട്ട്
+
+                        </button>
+
+                    </div>
+                `;
+
+                document
+                    .getElementById("next10")
+                    .onclick = () => {
+
+                    alert("Stage 11 Coming Soon 😎");
+
+                };
+
+            }
+
+        });
+
+}
 loadStage1();
 
 };
