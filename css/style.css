@@ -1078,3 +1078,24 @@ body {
   cursor:pointer;
   font-size:16px;
 }
+.stage-box{
+    text-align:center;
+    padding:40px;
+}
+
+.game-input{
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    width:280px;
+    margin:20px;
+}
+
+.game-btn{
+    padding:14px 30px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    background:#00ffcc;
+    font-weight:bold;
+}
