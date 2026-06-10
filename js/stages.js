@@ -258,6 +258,31 @@ function triggerJumpScare() {
     const scare =
         document.getElementById("jumpscareImage");
 
+    // Sound
+    const scareSound =
+        new Audio("assets/sounds/jumpscare.mp3");
+
+    scare.style.display = "flex";
+
+    scareSound.volume = 5.0;
+
+    scareSound.play();
+
+    setTimeout(() => {
+
+        scare.style.display = "none";
+
+        loadStage6();
+
+    }, 1500);
+
+}
+
+function triggerJumpScare() {
+
+    const scare =
+        document.getElementById("jumpscareImage");
+
     if (!scare) {
 
         alert("😱 BOOO!");
@@ -292,7 +317,73 @@ function triggerJumpScare() {
     }, 1500);
 
 }
+function loadStage6(){
 
+    currentStage = 6;
+    updateStage();
+
+    mascot("ഇത് എളുപ്പമാണ് 😏");
+
+    stageArea.innerHTML = `
+        <div class="stage-box">
+
+            <h2>
+                ഈ ബട്ടൺ 5 സെക്കന്റ് അമർത്തിപ്പിടിക്കൂ
+            </h2>
+
+            <button
+                id="holdBtn"
+                class="game-btn">
+
+                ഇവിടെ അമർത്തൂ
+
+            </button>
+
+            <h3 id="countText"></h3>
+
+        </div>
+    `;
+
+    const btn =
+        document.getElementById("holdBtn");
+
+    const countText =
+        document.getElementById("countText");
+
+    let timer;
+    let count = 0;
+
+    btn.addEventListener("mousedown", () => {
+
+        timer = setInterval(() => {
+
+            count++;
+
+            countText.innerHTML =
+                count + " / 5";
+
+            if(count === 4){
+
+                clearInterval(timer);
+
+                countText.innerHTML =
+                    "😂 വിട്ടുപോയി! വീണ്ടും ശ്രമിക്കൂ";
+
+                count = 0;
+
+            }
+
+        },1000);
+
+    });
+
+    btn.addEventListener("mouseup", () => {
+
+        clearInterval(timer);
+
+    });
+
+}
 /* Start Game */
 
 loadStage1();
