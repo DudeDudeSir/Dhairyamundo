@@ -278,7 +278,7 @@ function triggerJumpScare() {
 }
 /* Start Game */
 
-function loadStage6(){
+function loadStage6() {
 
     currentStage = 6;
     updateStage();
@@ -288,16 +288,12 @@ function loadStage6(){
     stageArea.innerHTML = `
         <div class="stage-box">
 
-            <h2>
-                ഈ ബട്ടൺ 5 സെക്കന്റ് അമർത്തിപ്പിടിക്കൂ
-            </h2>
+            <h2>ഈ ബട്ടൺ 5 സെക്കന്റ് അമർത്തിപ്പിടിക്കൂ</h2>
 
             <button
                 id="holdBtn"
                 class="game-btn">
-
                 ഇവിടെ അമർത്തൂ
-
             </button>
 
             <h3 id="countText"></h3>
@@ -305,11 +301,8 @@ function loadStage6(){
         </div>
     `;
 
-    const btn =
-        document.getElementById("holdBtn");
-
-    const countText =
-        document.getElementById("countText");
+    const btn = document.getElementById("holdBtn");
+    const countText = document.getElementById("countText");
 
     let timer;
     let count = 0;
@@ -320,21 +313,24 @@ function loadStage6(){
 
             count++;
 
-            countText.innerHTML =
-                count + " / 5";
+            countText.innerHTML = count + " / 5";
 
             if(count === 4){
 
-    clearInterval(timer);
+                clearInterval(timer);
 
-    countText.innerHTML =
-        "😂 വിട്ടുപോയി! വീണ്ടും ശ്രമിക്കൂ";
+                countText.innerHTML =
+                    "😂 വിട്ടുപോയി! വീണ്ടും ശ്രമിക്കൂ";
 
-    setTimeout(() => {
+                setTimeout(() => {
 
-        loadStage7();
+                    loadStage7();
 
-    },1500);
+                },1500);
+
+            }
+
+        },1000);
 
     });
 
@@ -345,7 +341,6 @@ function loadStage6(){
     });
 
 }
-
 function loadStage7(){
 
     currentStage = 7;
