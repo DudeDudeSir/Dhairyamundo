@@ -1,6 +1,11 @@
 const stageArea = document.getElementById("stageArea");
 const stageCounter = document.getElementById("stageCounter");
 const mascotBubble = document.getElementById("mascotGameBubble");
+const scareImage = document.getElementById("jumpscareImage");
+const scareSound = new Audio("assets/sounds/jumpscare.mp3");
+    setTimeout(() => {
+    scareImage.style.display = "none";
+}, 1500);
 
 let currentStage = 1;
 let playerName = "";
