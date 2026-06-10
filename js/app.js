@@ -4,6 +4,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const startModal = document.getElementById("startModal");
     const yesBtn = document.getElementById("yesBtn");
     const noBtn = document.getElementById("noBtn");
+    const scareImage = document.getElementById("jumpscareImage");
+const scareSound = new Audio("assets/sounds/jumpscare.mp3");
+    setTimeout(() => {
+    scareImage.style.display = "none";
+}, 1500);
+
+scareImage.style.display = "flex";
+scareSound.play();
 
     if(playBtn){
         playBtn.addEventListener("click", () => {
