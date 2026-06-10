@@ -258,52 +258,12 @@ function triggerJumpScare() {
     const scare =
         document.getElementById("jumpscareImage");
 
-    if (!scare) {
-
-        alert("😱 BOOO!");
-
-        return;
-    }
-
-    scare.style.display = "flex";
-
-    setTimeout(() => {
-
-        scare.style.display = "none";
-
-        stageArea.innerHTML = `
-            <div class="stage-box">
-
-                <h1>😂</h1>
-
-                <h2>പേടിച്ചോ?</h2>
-
-                <button
-                    class="game-btn"
-                    onclick="location.reload()">
-
-                    വീണ്ടും കളിക്കാം
-
-                </button>
-
-            </div>
-        `;
-
-    }, 1500);
-
-}
-    function triggerJumpScare() {
-
-    const scare =
-        document.getElementById("jumpscareImage");
-
-    // Sound
     const scareSound =
         new Audio("assets/sounds/jumpscare.mp3");
 
     scare.style.display = "flex";
 
-    scareSound.volume = 5.0;
+    scareSound.volume = 1.0;
 
     scareSound.play();
 
@@ -317,7 +277,8 @@ function triggerJumpScare() {
 
 }
 /* Start Game */
-    function loadStage6(){
+
+function loadStage6(){
 
     currentStage = 6;
     updateStage();
@@ -364,17 +325,18 @@ function triggerJumpScare() {
 
             if(count === 4){
 
-                clearInterval(timer);
+    clearInterval(timer);
 
-                countText.innerHTML =
-                    "😂 വിട്ടുപോയി! വീണ്ടും ശ്രമിക്കൂ";
+    countText.innerHTML =
+        "😂 വിട്ടുപോയി! വീണ്ടും ശ്രമിക്കൂ";
 
-                count = 0;
+    setTimeout(() => {
 
-            }
+        loadStage7();
 
-        },1000);
+    },1500);
 
+}
     });
 
     btn.addEventListener("mouseup", () => {
@@ -385,3 +347,62 @@ function triggerJumpScare() {
 
 }
 
+function loadStage7(){
+
+    currentStage = 7;
+    updateStage();
+
+    mascot("ശരിയായ വാതിൽ തിരഞ്ഞെടുക്കൂ 😏");
+
+    stageArea.innerHTML = `
+        <div class="stage-box">
+
+            <h2>ശരിയായ വാതിൽ തിരഞ്ഞെടുക്കൂ</h2>
+
+            <button class="game-btn doorBtn">🚪 Door 1</button>
+            <button class="game-btn doorBtn">🚪 Door 2</button>
+            <button class="game-btn doorBtn">🚪 Door 3</button>
+
+        </div>
+    `;
+
+    const doors =
+        document.querySelectorAll(".doorBtn");
+
+    doors.forEach(btn => {
+
+        btn.addEventListener("click", () => {
+
+            stageArea.innerHTML = `
+                <div class="stage-box">
+
+                    <h1>😂</h1>
+
+                    <h2>
+                        എല്ലാ വാതിലുകളും ഒരേ സ്ഥലത്തേക്കാണ്!
+                    </h2>
+
+                    <button
+                        id="nextDoor"
+                        class="game-btn">
+
+                        മുന്നോട്ട്
+
+                    </button>
+
+                </div>
+            `;
+
+            document
+                .getElementById("nextDoor")
+                .onclick = () => {
+
+                alert("Stage 8 Coming Soon 😎");
+
+            };
+
+        });
+
+    });
+
+}
