@@ -336,7 +336,6 @@ function loadStage6(){
 
     },1500);
 
-}
     });
 
     btn.addEventListener("mouseup", () => {
