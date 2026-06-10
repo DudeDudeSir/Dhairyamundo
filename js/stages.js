@@ -1,11 +1,6 @@
 const stageArea = document.getElementById("stageArea");
 const stageCounter = document.getElementById("stageCounter");
 const mascotBubble = document.getElementById("mascotGameBubble");
-const scareImage = document.getElementById("jumpscareImage");
-const scareSound = new Audio("assets/sounds/jumpscare.mp3");
-    setTimeout(() => {
-    scareImage.style.display = "none";
-}, 1500);
 
 let currentStage = 1;
 let playerName = "";
@@ -14,178 +9,257 @@ let moveCount = 0;
 loadStage1();
 
 function updateStageNumber() {
-    stageCounter.textContent = `${currentStage} / 20`;
+stageCounter.textContent = `${currentStage} / 20`;
 }
 
 function setMascot(text) {
-    mascotBubble.innerHTML = text;
+mascotBubble.innerHTML = text;
 }
 
 function loadStage1() {
 
-    currentStage = 1;
-    updateStageNumber();
+```
+currentStage = 1;
+updateStageNumber();
 
-    setMascot("നിന്റെ പേര് എന്താണ്? 😏");
+setMascot("നിന്റെ പേര് എന്താണ്? 😏");
 
-    stageArea.innerHTML = `
-        <div class="stage-box">
-            <h2>നിന്റെ പേര് എന്താണ്?</h2>
+stageArea.innerHTML = `
+    <div class="stage-box">
+        <h2>നിന്റെ പേര് എന്താണ്?</h2>
 
-            <input
-                type="text"
-                id="nameInput"
-                placeholder="പേര്"
-                class="game-input"
-            >
+        <input
+            type="text"
+            id="nameInput"
+            placeholder="പേര്"
+            class="game-input"
+        >
 
-            <button
-                id="continueBtn"
-                class="game-btn"
-                style="display:none;"
-            >
-                തുടരുക
-            </button>
-        </div>
-    `;
+        <button
+            id="continueBtn"
+            class="game-btn"
+            style="display:none;"
+        >
+            തുടരുക
+        </button>
+    </div>
+`;
 
-    const input = document.getElementById("nameInput");
-    const btn = document.getElementById("continueBtn");
+const input = document.getElementById("nameInput");
+const btn = document.getElementById("continueBtn");
 
-    input.addEventListener("input", () => {
+input.addEventListener("input", () => {
+    if(input.value.trim() !== ""){
+        btn.style.display = "inline-block";
+    }
+});
 
-        if(input.value.trim() !== ""){
-            btn.style.display = "inline-block";
-        }
-
-    });
-
-    btn.addEventListener("click", () => {
-
-        playerName = input.value;
-
-        loadStage2();
-
-    });
+btn.addEventListener("click", () => {
+    playerName = input.value;
+    loadStage2();
+});
+```
 
 }
 
 function loadStage2(){
 
-    currentStage = 2;
-    updateStageNumber();
+```
+currentStage = 2;
+updateStageNumber();
 
-    moveCount = 0;
+moveCount = 0;
 
-    setMascot("ഈ ബട്ടൺ ക്ലിക്ക് ചെയ്യൂ 😏");
+setMascot("ഈ ബട്ടൺ ക്ലിക്ക് ചെയ്യൂ 😏");
 
-    stageArea.innerHTML = `
-        <div class="stage-box">
+stageArea.innerHTML = `
+    <div class="stage-box">
 
-            <h2>
-                ഹലോ ${playerName}
-            </h2>
+        <h2>ഹലോ ${playerName}</h2>
 
-            <button
-                id="movingBtn"
-                class="game-btn"
-                style="position:absolute;"
-            >
-                ക്ലിക്ക് ചെയ്യൂ 😏
-            </button>
+        <button
+            id="movingBtn"
+            class="game-btn"
+            style="position:absolute;"
+        >
+            ക്ലിക്ക് ചെയ്യൂ 😏
+        </button>
 
-        </div>
-    `;
+    </div>
+`;
 
-    const btn =
-        document.getElementById("movingBtn");
+const btn = document.getElementById("movingBtn");
 
-    btn.addEventListener("click", () => {
+btn.addEventListener("click", () => {
 
-        moveCount++;
+    moveCount++;
 
-        btn.style.left =
-            Math.random() * 70 + "%";
+    btn.style.left = Math.random() * 70 + "%";
+    btn.style.top = Math.random() * 60 + "%";
 
-        btn.style.top =
-            Math.random() * 60 + "%";
+    if(moveCount >= 2){
+        setTimeout(loadStage3,500);
+    }
 
-        if(moveCount >= 2){
-
-            setTimeout(() => {
-
-                loadStage3();
-
-            },500);
-
-        }
-
-    });
+});
+```
 
 }
 
 function loadStage3(){
 
-    currentStage = 3;
-    updateStageNumber();
+```
+currentStage = 3;
+updateStageNumber();
 
-    setMascot("അയ്യേ! നിന്നെ പറ്റിച്ചേ 😂");
+setMascot("അയ്യേ! നിന്നെ പറ്റിച്ചേ 😂");
+
+stageArea.innerHTML = `
+    <div class="stage-box">
+
+        <h1>😂</h1>
+
+        <h2>അയ്യേ! നിന്നെ പറ്റിച്ചേ</h2>
+
+        <button
+            id="nextStage"
+            class="game-btn"
+        >
+            ശരി... മുന്നോട്ട് പോവാം
+        </button>
+
+    </div>
+`;
+
+document
+  .getElementById("nextStage")
+  .addEventListener("click", loadStage4);
+```
+
+}
+
+function loadStage4(){
+
+```
+currentStage = 4;
+updateStageNumber();
+
+setMascot("ഈ ബട്ടൺ അമർത്തരുത് 😈");
+
+stageArea.innerHTML = `
+    <div class="stage-box">
+
+        <h2>ഈ ബട്ടൺ അമർത്തരുത്</h2>
+
+        <button
+            id="dontClick"
+            class="game-btn"
+        >
+            അമർത്തരുത്
+        </button>
+
+    </div>
+`;
+
+document
+  .getElementById("dontClick")
+  .addEventListener("click", () => {
+
+    alert("😂 അതാണ് അമർത്തിയത്!");
+
+    setTimeout(() => {
+        loadStage5();
+    },1000);
+
+  });
+```
+
+}
+
+function loadStage5(){
+
+```
+currentStage = 5;
+updateStageNumber();
+
+setMascot("രഹസ്യ ചലഞ്ച് ലോഡ് ചെയ്യുന്നു... 😏");
+
+stageArea.innerHTML = `
+    <div class="stage-box">
+        <h2>🔒 Secret Challenge</h2>
+
+        <div class="loading-bar">
+            <div id="loadingFill"></div>
+        </div>
+
+        <h3 id="loadingText">0%</h3>
+    </div>
+`;
+
+const fill = document.getElementById("loadingFill");
+const text = document.getElementById("loadingText");
+
+let progress = 0;
+
+const timer = setInterval(() => {
+
+    progress += Math.floor(Math.random() * 15);
+
+    if(progress > 99){
+        progress = 99;
+    }
+
+    fill.style.width = progress + "%";
+    text.innerText = progress + "%";
+
+    if(progress >= 99){
+
+        clearInterval(timer);
+
+        setTimeout(() => {
+            triggerJumpScare();
+        },2000);
+
+    }
+
+},500);
+```
+
+}
+
+function triggerJumpScare(){
+
+```
+const scareImage =
+    document.getElementById("jumpscareImage");
+
+const scareSound =
+    new Audio("assets/sounds/jumpscare.mp3");
+
+scareImage.style.display = "flex";
+
+scareSound.play();
+
+setTimeout(() => {
+
+    scareImage.style.display = "none";
 
     stageArea.innerHTML = `
         <div class="stage-box">
 
             <h1>😂</h1>
 
-            <h2>
-                അയ്യേ! നിന്നെ പറ്റിച്ചേ
-            </h2>
+            <h2>അയ്യേ! പേടിച്ചോ?</h2>
 
             <button
-                id="nextStage"
-                class="game-btn"
-            >
-                ശരി... മുന്നോട്ട് പോവാം
+              class="game-btn">
+              മുന്നോട്ട് പോവാം
             </button>
 
         </div>
     `;
 
-    document
-      .getElementById("nextStage")
-      .addEventListener("click", loadStage4);
-
-}
-
-function loadStage4(){
-
-    currentStage = 4;
-    updateStageNumber();
-
-    setMascot("ഈ ബട്ടൺ അമർത്തരുത് 😈");
-
-    stageArea.innerHTML = `
-        <div class="stage-box">
-
-            <h2>
-                ഈ ബട്ടൺ അമർത്തരുത്
-            </h2>
-
-            <button
-                id="dontClick"
-                class="game-btn"
-            >
-                അമർത്തരുത്
-            </button>
-
-        </div>
-    `;
-
-    document
-      .getElementById("dontClick")
-      .addEventListener("click", () => {
-
-        alert("😂 അതാണ് അമർത്തിയത്!");
-
-      });
+},1500);
+```
 
 }
