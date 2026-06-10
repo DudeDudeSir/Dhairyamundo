@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ലീഡർബോർഡ് | Leaderboard - ധൈര്യമുണ്ടോ?</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;700;900&family=Orbitron:wght@700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="home-body">
+
+  <div class="bg-particles" id="bgParticles"></div>
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo">← <span class="ml-text">ധൈര്യമുണ്ടോ?</span></a>
+    <div class="nav-links">
+      <a href="game.html" class="btn-play-small">🎮 <span class="ml-text">കളിക്കൂ</span></a>
+    </div>
+  </nav>
+
+  <section class="lb-section">
+    <div class="lb-header">
+      <div class="lb-trophy">🏆</div>
+      <h1 class="lb-title ml-text">ധൈര്യ ജേതാക്കൾ</h1>
+      <p class="lb-subtitle">Hall of Courage</p>
+    </div>
+
+    <!-- Top 3 Podium -->
+    <div class="podium-wrap" id="podiumWrap">
+      <!-- Injected by leaderboard.js -->
+    </div>
+
+    <!-- Full leaderboard table -->
+    <div class="lb-table-wrap">
+      <table class="lb-table" id="lbTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th class="ml-text">പേര്</th>
+            <th class="ml-text">സമയം</th>
+            <th class="ml-text">തീയതി</th>
+            <th class="ml-text">ബാഡ്ജ്</th>
+          </tr>
+        </thead>
+        <tbody id="lbTableBody">
+          <!-- Injected by leaderboard.js -->
+        </tbody>
+      </table>
+      <div class="lb-empty" id="lbEmpty" style="display:none;">
+        <div class="empty-mascot">😴</div>
+        <p class="ml-text">ഇതുവരെ ആരും ജയിച്ചിട്ടില്ല!</p>
+        <p class="empty-en">No winners yet. Be the first!</p>
+        <a href="game.html" class="btn-play-small">🎮 <span class="ml-text">ഇപ്പോൾ കളിക്കൂ</span></a>
+      </div>
+    </div>
+
+    <!-- Clear button -->
+    <div class="lb-actions">
+      <button class="btn-danger" id="clearLbBtn" onclick="clearLeaderboard()">
+        🗑️ <span class="ml-text">ലീഡർബോർഡ് മായ്ക്കൂ</span>
+      </button>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p class="footer-en">ധൈര്യമുണ്ടോ? © 2025 | Made with 😂 in Kerala</p>
+  </footer>
+
+  <script src="js/leaderboard.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
