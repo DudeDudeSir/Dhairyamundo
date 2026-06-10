@@ -341,7 +341,7 @@ function loadStage6() {
     });
 
 }
-function loadStage7(){
+function loadStage7() {
 
     currentStage = 7;
     updateStage();
@@ -351,11 +351,25 @@ function loadStage7(){
     stageArea.innerHTML = `
         <div class="stage-box">
 
-            <h2>ശരിയായ വാതിൽ തിരഞ്ഞെടുക്കൂ</h2>
+            <h2>🚪 ശരിയായ വാതിൽ തിരഞ്ഞെടുക്കൂ</h2>
 
-            <button class="game-btn doorBtn">🚪 Door 1</button>
-            <button class="game-btn doorBtn">🚪 Door 2</button>
-            <button class="game-btn doorBtn">🚪 Door 3</button>
+            <br>
+
+            <button class="game-btn doorBtn">
+                🚪 Door 1
+            </button>
+
+            <br><br>
+
+            <button class="game-btn doorBtn">
+                🚪 Door 2
+            </button>
+
+            <br><br>
+
+            <button class="game-btn doorBtn">
+                🚪 Door 3
+            </button>
 
         </div>
     `;
@@ -363,9 +377,9 @@ function loadStage7(){
     const doors =
         document.querySelectorAll(".doorBtn");
 
-    doors.forEach(btn => {
+    doors.forEach((door) => {
 
-        btn.addEventListener("click", () => {
+        door.addEventListener("click", () => {
 
             stageArea.innerHTML = `
                 <div class="stage-box">
@@ -375,6 +389,12 @@ function loadStage7(){
                     <h2>
                         എല്ലാ വാതിലുകളും ഒരേ സ്ഥലത്തേക്കാണ്!
                     </h2>
+
+                    <p>
+                        വീണ്ടും പറ്റിച്ചു 😈
+                    </p>
+
+                    <br>
 
                     <button
                         id="nextDoor"
@@ -389,11 +409,11 @@ function loadStage7(){
 
             document
                 .getElementById("nextDoor")
-                .onclick = () => {
+                .addEventListener("click", () => {
 
-                alert("Stage 8 Coming Soon 😎");
+                    loadStage8();
 
-            };
+                });
 
         });
 
