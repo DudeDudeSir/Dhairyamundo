@@ -400,3 +400,6 @@ function loadStage7(){
     });
 
 }
+loadStage1();
+
+};
