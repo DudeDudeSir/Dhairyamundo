@@ -1603,6 +1603,321 @@ function loadStage16(){
 
 
 }
+/* ---------------- STAGE 17 ---------------- */
+
+function loadStage17(){
+
+    currentStage = 17;
+    updateStage();
+
+    mascot("ഈ ബട്ടൺ പിടിക്കാൻ കഴിയുമോ? 😏");
+
+
+    stageArea.innerHTML = `
+
+    <div class="stage-box"
+    style="height:350px; position:relative;">
+
+
+        <h2>
+        🏃 Stage 17 - Catch Me If You Can
+        </h2>
+
+
+        <p>
+        ബട്ടൺ 5 തവണ ക്ലിക്ക് ചെയ്യൂ!
+        </p>
+
+
+        <h3 id="catchCount">
+        0 / 5
+        </h3>
+
+
+
+        <button
+        id="catchBtn"
+        class="game-btn"
+        style="
+        position:absolute;
+        left:45%;
+        top:60%;
+        ">
+
+        പിടിക്കൂ 😈
+
+        </button>
+
+
+    </div>
+
+    `;
+
+
+
+    const btn =
+    document.getElementById("catchBtn");
+
+
+    const countText =
+    document.getElementById("catchCount");
+
+
+    let count = 0;
+
+
+
+    btn.addEventListener("mouseover",()=>{
+
+
+        btn.style.left =
+        Math.random()*75 + "%";
+
+
+        btn.style.top =
+        Math.random()*70 + "%";
+
+
+    });
+
+
+
+
+    btn.onclick=function(){
+
+
+        count++;
+
+
+        countText.innerHTML =
+        count + " / 5";
+
+
+
+        if(count < 5){
+
+
+            btn.style.left =
+            Math.random()*75 + "%";
+
+
+            btn.style.top =
+            Math.random()*70 + "%";
+
+
+        }
+
+
+
+        if(count >= 5){
+
+
+            mascot(
+            "🔥 നീ പിടിച്ചു!"
+            );
+
+
+
+            stageArea.innerHTML = `
+
+            <div class="stage-box">
+
+
+                <h1>🏆</h1>
+
+
+                <h2>
+                Button Master!
+                </h2>
+
+
+
+                <button
+                id="stage18Btn"
+                class="game-btn">
+
+                Stage 18 ലേക്ക് പോകാം
+
+                </button>
+
+
+            </div>
+
+            `;
+
+
+
+            document
+            .getElementById("stage18Btn")
+            .onclick =
+            loadStage18;
+
+
+        }
+
+
+    };
+
+
+}
+/* ---------------- STAGE 18 ---------------- */
+
+function loadStage18(){
+
+    currentStage = 18;
+    updateStage();
+
+    mascot("വേഗം തീരുമാനിക്കൂ... സമയം പോകുന്നു 😈");
+
+
+    stageArea.innerHTML = `
+
+    <div class="stage-box">
+
+        <h2>⏳ Stage 18 - Countdown Challenge</h2>
+
+
+        <h1 id="countdown">
+            10
+        </h1>
+
+
+        <p>
+        സമയം തീരുന്നതിന് മുമ്പ് ശരിയായ button അമർത്തൂ!
+        </p>
+
+
+
+        <button
+        id="stopBtn"
+        class="game-btn">
+
+        🛑 STOP
+
+        </button>
+
+
+        <h3 id="resultText"></h3>
+
+
+    </div>
+
+    `;
+
+
+
+    let time = 10;
+    let stopped = false;
+
+
+
+    const timerText =
+    document.getElementById("countdown");
+
+
+    const result =
+    document.getElementById("resultText");
+
+
+    const stopBtn =
+    document.getElementById("stopBtn");
+
+
+
+    let timer = setInterval(()=>{
+
+
+        time--;
+
+
+        timerText.innerHTML = time;
+
+
+
+        if(time <= 0 && !stopped){
+
+
+            clearInterval(timer);
+
+
+            result.innerHTML =
+            "😂 Too Late! വീണ്ടും ശ്രമിക്കൂ";
+
+
+            setTimeout(()=>{
+
+                loadStage18();
+
+            },1500);
+
+
+        }
+
+
+
+    },1000);
+
+
+
+
+    stopBtn.onclick=function(){
+
+
+        if(stopped) return;
+
+
+        stopped = true;
+
+
+        clearInterval(timer);
+
+
+
+        mascot(
+        "🔥 നല്ല reaction speed!"
+        );
+
+
+
+        stageArea.innerHTML = `
+
+        <div class="stage-box">
+
+
+            <h1>✅</h1>
+
+
+            <h2>
+            Countdown Stopped!
+            </h2>
+
+
+
+            <button
+            id="stage19Btn"
+            class="game-btn">
+
+            Stage 19 ലേക്ക് പോകാം
+
+            </button>
+
+
+        </div>
+
+        `;
+
+
+
+        document
+        .getElementById("stage19Btn")
+        .onclick =
+        loadStage19;
+
+
+    };
+
+
+}
 loadStage1();
 
 };
