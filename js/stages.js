@@ -786,123 +786,299 @@ function loadStage11(){
 }
 /* ---------------- STAGE 11 ---------------- */
 
+/* ---------------- STAGE 12 ---------------- */
+
 function loadStage12(){
 
     currentStage = 12;
     updateStage();
 
-    mascot("നിന്റെ ഓർമ്മ ശക്തി നോക്കാം 😈");
+    mascot("ഓർമ്മ പരീക്ഷ തുടങ്ങട്ടെ 😈");
 
-    const emojis = [
-        "🔥",
-        "👻",
-        "🍕",
-        "⚡",
-        "😂"
-    ];
 
     stageArea.innerHTML = `
 
-        <div class="stage-box">
+    <div class="stage-box">
 
-            <h2>
-                ഈ emoji order ഓർമ്മിക്കൂ 🧠
-            </h2>
+        <h2>🧠 Stage 12 - Memory Challenge</h2>
 
-            <div id="emojiShow"
-            style="font-size:50px;">
-                ${emojis.join(" ")}
-            </div>
+        <p>
+        ഈ emoji ക്രമം ഓർത്ത് വെക്കൂ!
+        </p>
 
-            <h3 id="hideText">
-                3 seconds...
+
+        <h1 id="memorySequence">
+            🌙 🐱 ⚡ 🎯
+        </h1>
+
+
+        <p id="hideText">
+            3 seconds കഴിഞ്ഞാൽ ഇത് മറയും...
+        </p>
+
+
+
+        <div id="answerArea" style="display:none;">
+
+
+            <h3>
+            ശരിയായ ക്രമം തിരഞ്ഞെടുക്കൂ
             </h3>
 
-        </div>
 
-    `;
-
-
-    setTimeout(()=>{
+            <button class="game-btn memoryBtn">
+                🌙
+            </button>
 
 
-        stageArea.innerHTML = `
-
-        <div class="stage-box">
-
-            <h2>
-            ശരിയായ order എഴുതൂ 😏
-            </h2>
+            <button class="game-btn memoryBtn">
+                🐱
+            </button>
 
 
-            <p>
-            Hint: Emoji മാത്രം space ഉപയോഗിച്ച് എഴുതുക
-            </p>
+            <button class="game-btn memoryBtn">
+                ⚡
+            </button>
 
 
-            <input 
-            id="memoryInput"
-            class="game-input"
-            placeholder="🔥 👻 🍕 ⚡ 😂">
+            <button class="game-btn memoryBtn">
+                🎯
+            </button>
 
 
             <br><br>
 
 
-            <button
+            <button 
             id="checkMemory"
             class="game-btn">
 
-            Check
+            പരിശോധിക്കുക
 
             </button>
 
 
         </div>
 
-        `;
+
+    </div>
+
+    `;
+
+
+
+    let selected = "";
+
+
+
+    setTimeout(()=>{
 
 
         document
-        .getElementById("checkMemory")
-        .onclick = ()=>{
+        .getElementById("memorySequence")
+        .style.display="none";
 
 
-            let answer =
+        document
+        .getElementById("hideText")
+        .innerHTML=
+        "ഇപ്പോൾ ഓർമ്മയിൽ നിന്ന് തിരഞ്ഞെടുക്കൂ 😏";
+
+
+        document
+        .getElementById("answerArea")
+        .style.display="block";
+
+
+    },3000);
+
+
+
+
+    const buttons =
+    document.querySelectorAll(".memoryBtn");
+
+
+
+    buttons.forEach(btn=>{
+
+
+        btn.onclick=function(){
+
+
+            selected += btn.innerHTML.trim()+" ";
+
+
+            btn.style.opacity="0.5";
+
+
+        };
+
+
+    });
+
+
+
+
+
+    document
+    .getElementById("checkMemory")
+    .onclick=function(){
+
+
+        let correct =
+        "🌙 🐱 ⚡ 🎯";
+
+
+
+        if(selected.trim() === correct){
+
+
+            mascot("അടിപൊളി! ഓർമ്മ ശക്തി ഉണ്ട് 🔥");
+
+
+            stageArea.innerHTML=`
+
+            <div class="stage-box">
+
+                <h1>✅</h1>
+
+                <h2>
+                ശരിയായ ഉത്തരം!
+                </h2>
+
+                <button 
+                class="game-btn"
+                id="nextStageBtn">
+
+                Stage 13 ലേക്ക് പോകാം
+
+                </button>
+
+
+            </div>
+
+            `;
+
+
             document
-            .getElementById("memoryInput")
-            .value
-            .trim();
+            .getElementById("nextStageBtn")
+            .onclick =
+            loadStage13;
 
 
-            let correct =
-            emojis.join(" ");
+
+        }
+
+        else{
 
 
-            if(answer === correct){
+            mascot("അയ്യേ തെറ്റിപ്പോയി 😂");
 
 
-                mascot("വാവാ! നല്ല ഓർമ്മ 😎");
+            alert(
+            "❌ Wrong order! വീണ്ടും ശ്രമിക്കൂ"
+            );
+
+
+            loadStage12();
+
+
+        }
+
+
+    };
+
+
+}
+/* ---------------- STAGE 13 ---------------- */
+
+function loadStage13(){
+
+    currentStage = 13;
+    updateStage();
+
+    mascot("ഇനി ബുദ്ധി പരീക്ഷിക്കാം 😈");
+
+
+    stageArea.innerHTML = `
+
+    <div class="stage-box">
+
+        <h2>🧠 Stage 13 - Trick Question</h2>
+
+
+        <p>
+        ഒരു മുറിയിൽ 5 മെഴുകുതിരി ഉണ്ടായിരുന്നു.
+        2 എണ്ണം അണച്ചു.
+        ഇപ്പോൾ എത്ര മെഴുകുതിരി ബാക്കി?
+        </p>
+
+
+        <button class="game-btn answerBtn">
+            3
+        </button>
+
+
+        <button class="game-btn answerBtn">
+            5
+        </button>
+
+
+        <button class="game-btn answerBtn">
+            2
+        </button>
+
+
+    </div>
+
+    `;
+
+
+
+    const answers =
+    document.querySelectorAll(".answerBtn");
+
+
+
+    answers.forEach(btn=>{
+
+
+        btn.onclick=function(){
+
+
+            if(btn.innerHTML.trim()=="2"){
+
+
+                mascot(
+                "🔥 ശരിയാണ്! നീ ശ്രദ്ധിച്ചു!"
+                );
 
 
                 stageArea.innerHTML = `
 
                 <div class="stage-box">
 
-                <h1>🧠🔥</h1>
+                    <h1>✅</h1>
 
-                <h2>
-                ശരിയാണ്!
-                </h2>
+                    <h2>
+                    ശരിയായ ഉത്തരം!
+                    </h2>
 
 
-                <button
-                id="next12"
-                class="game-btn">
+                    <p>
+                    മെഴുകുതിരി അണച്ചത് 2 ആണ്,
+                    അതാണ് ബാക്കി 😏
+                    </p>
 
-                Stage 12 ലേക്ക് പോകാം
 
-                </button>
+                    <button 
+                    id="goStage14"
+                    class="game-btn">
+
+                    Stage 14 ലേക്ക് പോകാം
+
+                    </button>
 
 
                 </div>
@@ -911,20 +1087,27 @@ function loadStage12(){
 
 
                 document
-                .getElementById("next11")
-                .onclick = loadStage13;
+                .getElementById("goStage14")
+                .onclick =
+                loadStage14;
+
 
 
             }
             else{
 
 
-                mascot("അയ്യേ മറന്നോ 😂");
+                mascot(
+                "😂 പറ്റിച്ചു പോയി!"
+                );
 
 
                 alert(
-                "Wrong order 😅 വീണ്ടും ശ്രമിക്കൂ"
+                "❌ തെറ്റായ ഉത്തരം! വീണ്ടും ശ്രമിക്കൂ"
                 );
+
+
+                loadStage13();
 
 
             }
@@ -933,7 +1116,7 @@ function loadStage12(){
         };
 
 
-    },3000);
+    });
 
 
 }
