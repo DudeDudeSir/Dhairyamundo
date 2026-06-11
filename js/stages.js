@@ -784,6 +784,159 @@ function loadStage11(){
 
 
 }
+/* ---------------- STAGE 11 ---------------- */
+
+function loadStage12(){
+
+    currentStage = 12;
+    updateStage();
+
+    mascot("നിന്റെ ഓർമ്മ ശക്തി നോക്കാം 😈");
+
+    const emojis = [
+        "🔥",
+        "👻",
+        "🍕",
+        "⚡",
+        "😂"
+    ];
+
+    stageArea.innerHTML = `
+
+        <div class="stage-box">
+
+            <h2>
+                ഈ emoji order ഓർമ്മിക്കൂ 🧠
+            </h2>
+
+            <div id="emojiShow"
+            style="font-size:50px;">
+                ${emojis.join(" ")}
+            </div>
+
+            <h3 id="hideText">
+                3 seconds...
+            </h3>
+
+        </div>
+
+    `;
+
+
+    setTimeout(()=>{
+
+
+        stageArea.innerHTML = `
+
+        <div class="stage-box">
+
+            <h2>
+            ശരിയായ order എഴുതൂ 😏
+            </h2>
+
+
+            <p>
+            Hint: Emoji മാത്രം space ഉപയോഗിച്ച് എഴുതുക
+            </p>
+
+
+            <input 
+            id="memoryInput"
+            class="game-input"
+            placeholder="🔥 👻 🍕 ⚡ 😂">
+
+
+            <br><br>
+
+
+            <button
+            id="checkMemory"
+            class="game-btn">
+
+            Check
+
+            </button>
+
+
+        </div>
+
+        `;
+
+
+        document
+        .getElementById("checkMemory")
+        .onclick = ()=>{
+
+
+            let answer =
+            document
+            .getElementById("memoryInput")
+            .value
+            .trim();
+
+
+            let correct =
+            emojis.join(" ");
+
+
+            if(answer === correct){
+
+
+                mascot("വാവാ! നല്ല ഓർമ്മ 😎");
+
+
+                stageArea.innerHTML = `
+
+                <div class="stage-box">
+
+                <h1>🧠🔥</h1>
+
+                <h2>
+                ശരിയാണ്!
+                </h2>
+
+
+                <button
+                id="next12"
+                class="game-btn">
+
+                Stage 12 ലേക്ക് പോകാം
+
+                </button>
+
+
+                </div>
+
+                `;
+
+
+                document
+                .getElementById("next11")
+                .onclick = loadStage13;
+
+
+            }
+            else{
+
+
+                mascot("അയ്യേ മറന്നോ 😂");
+
+
+                alert(
+                "Wrong order 😅 വീണ്ടും ശ്രമിക്കൂ"
+                );
+
+
+            }
+
+
+        };
+
+
+    },3000);
+
+
+}
 loadStage1();
 
 };
