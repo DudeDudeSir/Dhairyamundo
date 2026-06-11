@@ -1918,6 +1918,353 @@ function loadStage18(){
 
 
 }
+/* ---------------- STAGE 19 ---------------- */
+
+function loadStage19(){
+
+    currentStage = 19;
+    updateStage();
+
+    mascot("അവസാന പരീക്ഷയ്ക്ക് മുമ്പുള്ള അവസാന പടി 😈");
+
+
+    stageArea.innerHTML = `
+
+    <div class="stage-box">
+
+        <h2>🔐 Stage 19 - Secret Lock</h2>
+
+
+        <p>
+        ശരിയായ 3 digit code കണ്ടെത്തൂ!
+        </p>
+
+
+        <h3>
+        Hint:
+        </h3>
+
+        <p>
+        🔹 ആദ്യ നമ്പർ = 5<br>
+        🔹 രണ്ടാം നമ്പർ = ആദ്യ നമ്പറിന്റെ ഇരട്ടി<br>
+        🔹 മൂന്നാം നമ്പർ = രണ്ടാം നമ്പർ - 1
+        </p>
+
+
+
+        <input
+        id="codeInput"
+        class="game-input"
+        placeholder="Enter Code"
+        maxlength="3">
+
+
+        <br><br>
+
+
+        <button
+        id="unlockBtn"
+        class="game-btn">
+
+        🔓 Unlock
+
+        </button>
+
+
+        <h3 id="lockResult"></h3>
+
+
+    </div>
+
+    `;
+
+
+
+    const input =
+    document.getElementById("codeInput");
+
+
+    const btn =
+    document.getElementById("unlockBtn");
+
+
+    const result =
+    document.getElementById("lockResult");
+
+
+
+    btn.onclick=function(){
+
+
+        let answer =
+        input.value.trim();
+
+
+
+        if(answer === "591"){
+
+
+            mascot(
+            "🔥 Brilliant! നീ അവസാന ഘട്ടത്തിലേക്ക് എത്തി!"
+            );
+
+
+
+            stageArea.innerHTML = `
+
+            <div class="stage-box">
+
+                <h1>🔓✅</h1>
+
+
+                <h2>
+                Lock Opened!
+                </h2>
+
+
+                <button
+                id="stage20Btn"
+                class="game-btn">
+
+                Final Stage 🚀
+
+                </button>
+
+
+            </div>
+
+            `;
+
+
+
+            document
+            .getElementById("stage20Btn")
+            .onclick =
+            loadStage20;
+
+
+        }
+        else{
+
+
+            result.innerHTML =
+            "❌ Wrong Code! വീണ്ടും ശ്രമിക്കൂ 😈";
+
+
+        }
+
+
+    };
+
+
+}
+/* ---------------- STAGE 20 ---------------- */
+
+function loadStage20(){
+
+    currentStage = 20;
+    updateStage();
+
+    mascot("അവസാന ഘട്ടം... നീ ഇവിടെ വരെ എത്തി 😈🔥");
+
+
+    stageArea.innerHTML = `
+
+    <div class="stage-box final-box">
+
+
+        <h1>
+        🏆 FINAL STAGE 🏆
+        </h1>
+
+
+        <h2>
+        ധൈര്യമുണ്ടോ വിജയ പരീക്ഷ
+        </h2>
+
+
+        <p>
+        നീ എല്ലാ ഘട്ടങ്ങളും പൂർത്തിയാക്കി...
+        പക്ഷേ ഒരു അവസാന ചോദ്യം 😏
+        </p>
+
+
+        <h2 id="finalQuestion">
+        നീ ശരിക്കും ധൈര്യശാലിയാണോ?
+        </h2>
+
+
+
+        <button
+        id="yesFinal"
+        class="game-btn">
+
+        അതെ 😎
+
+        </button>
+
+
+        <button
+        id="noFinal"
+        class="game-btn">
+
+        ഇല്ല 😨
+
+        </button>
+
+
+
+    </div>
+
+    `;
+
+
+
+    document
+    .getElementById("yesFinal")
+    .onclick=function(){
+
+
+        showVictory();
+
+
+    };
+
+
+
+    document
+    .getElementById("noFinal")
+    .onclick=function(){
+
+
+        mascot(
+        "😂 ഇത്രയും വന്ന് ഇപ്പോൾ പേടിച്ചോ?"
+        );
+
+
+        alert(
+        "അയ്യേ... അവസാനത്തിൽ തോറ്റു 😂"
+        );
+
+
+        showVictory();
+
+
+    };
+
+
+}
+
+
+
+
+
+function showVictory(){
+
+
+    mascot(
+    "🔥 നീ ശരിക്കും ധൈര്യശാലിയാണ്!"
+    );
+
+
+    stageArea.innerHTML = `
+
+
+    <div class="stage-box victory-box">
+
+
+        <h1>
+        🎉🏆🎉
+        </h1>
+
+
+        <h2>
+        അഭിനന്ദനങ്ങൾ!
+        </h2>
+
+
+
+        <h1>
+        ധൈര്യമുണ്ടോ Completed
+        </h1>
+
+
+
+        <p>
+        Player:
+        ${playerName}
+        </p>
+
+
+
+        <p>
+        നിങ്ങൾ 20/20 ഘട്ടങ്ങളും വിജയിച്ചു 🔥
+        </p>
+
+
+
+
+        <button
+        id="shareBtn"
+        class="game-btn">
+
+        📢 Share Victory
+
+        </button>
+
+
+
+        <button
+        onclick="location.reload()"
+        class="game-btn">
+
+        വീണ്ടും കളിക്കാം
+
+        </button>
+
+
+
+    </div>
+
+
+    `;
+
+
+
+    document
+    .getElementById("shareBtn")
+    .onclick=function(){
+
+
+        if(navigator.share){
+
+
+            navigator.share({
+
+                title:"ധൈര്യമുണ്ടോ?",
+                text:
+                "ഞാൻ ധൈര്യമുണ്ടോ ഗെയിം 20/20 പൂർത്തിയാക്കി 🏆🔥"
+
+            });
+
+
+        }
+
+        else{
+
+
+            alert(
+            "Share support ഇല്ല 😅"
+            );
+
+
+        }
+
+
+    };
+
+
+}
 loadStage1();
 
 };
