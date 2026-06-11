@@ -1120,6 +1120,178 @@ function loadStage13(){
 
 
 }
+/* ---------------- STAGE 14 ---------------- */
+
+function loadStage14(){
+
+    currentStage = 14;
+    updateStage();
+
+    mascot("വേഗം കാണിക്കൂ 😈⚡");
+
+
+    stageArea.innerHTML = `
+
+    <div class="stage-box">
+
+        <h2>⚡ Stage 14 - Speed Challenge</h2>
+
+
+        <p>
+        5 സെക്കന്റിനുള്ളിൽ 10 തവണ ക്ലിക്ക് ചെയ്യണം!
+        </p>
+
+
+        <h1 id="clickCount">
+        0 / 10
+        </h1>
+
+
+        <h3 id="timeLeft">
+        സമയം: 5
+        </h3>
+
+
+        <button 
+        id="speedBtn"
+        class="game-btn">
+
+        CLICK ME ⚡
+
+        </button>
+
+
+    </div>
+
+    `;
+
+
+
+    let clicks = 0;
+    let time = 5;
+
+
+
+    const countText =
+    document.getElementById("clickCount");
+
+
+    const timerText =
+    document.getElementById("timeLeft");
+
+
+    const btn =
+    document.getElementById("speedBtn");
+
+
+
+    btn.onclick = function(){
+
+
+        clicks++;
+
+
+        countText.innerHTML =
+        clicks + " / 10";
+
+
+
+        if(clicks >= 10){
+
+
+            clearInterval(timer);
+
+
+
+            mascot(
+            "🔥 നിന്റെ വേഗം കൊള്ളാം!"
+            );
+
+
+            stageArea.innerHTML = `
+
+            <div class="stage-box">
+
+                <h1>⚡</h1>
+
+                <h2>
+                Speed Master!
+                </h2>
+
+
+                <button 
+                id="stage15Btn"
+                class="game-btn">
+
+                Stage 15 ലേക്ക് പോകാം
+
+                </button>
+
+
+            </div>
+
+            `;
+
+
+            document
+            .getElementById("stage15Btn")
+            .onclick =
+            loadStage15;
+
+
+        }
+
+
+    };
+
+
+
+    const timer =
+    setInterval(()=>{
+
+
+        time--;
+
+
+        timerText.innerHTML =
+        "സമയം: " + time;
+
+
+
+        if(time <= 0){
+
+
+            clearInterval(timer);
+
+
+
+            if(clicks < 10){
+
+
+                mascot(
+                "😂 വേഗം പോരാ!"
+                );
+
+
+                alert(
+                "Time Up! വീണ്ടും ശ്രമിക്കൂ 😈"
+                );
+
+
+                loadStage14();
+
+
+            }
+
+
+        }
+
+
+
+    },1000);
+
+
+}
 loadStage1();
 
 };
