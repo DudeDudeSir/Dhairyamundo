@@ -673,13 +673,115 @@ function loadStage10(){
                     .getElementById("next10")
                     .onclick = () => {
 
-                    alert("Stage 11 Coming Soon 😎");
+                    loadStage11();
 
                 };
 
             }
 
         });
+
+}
+function loadStage11(){
+
+    currentStage = 11;
+    updateStage();
+
+    mascot("ഒരു എളുപ്പമുള്ള ചോദ്യം 😏");
+
+    stageArea.innerHTML = `
+
+        <div class="stage-box">
+
+            <h2>
+                🧠 2 + 2 = ?
+            </h2>
+
+            <p>
+                ശരിയായ ഉത്തരം തിരഞ്ഞെടുക്കൂ
+            </p>
+
+
+            <button class="game-btn answerBtn">
+                3
+            </button>
+
+
+            <button class="game-btn answerBtn">
+                4
+            </button>
+
+
+            <button class="game-btn answerBtn">
+                5
+            </button>
+
+
+            <button class="game-btn answerBtn">
+                6
+            </button>
+
+
+            <h3 id="answerText"></h3>
+
+
+        </div>
+
+    `;
+
+
+    const buttons =
+        document.querySelectorAll(".answerBtn");
+
+
+    buttons.forEach(btn => {
+
+
+        btn.addEventListener("click",()=>{
+
+
+            stageArea.innerHTML = `
+
+            <div class="stage-box">
+
+
+                <h1>😂</h1>
+
+
+                <h2>
+                അയ്യേ! ഇത് ഒരു ട്രിക്ക് ആയിരുന്നു!
+                </h2>
+
+
+                <p>
+                2 + 2 = 4 ആണെന്ന് നിനക്കും അറിയാം 😈
+                </p>
+
+
+                <button
+                id="next11"
+                class="game-btn">
+
+                Stage 12 ലേക്ക് പോകാം
+
+                </button>
+
+
+            </div>
+
+            `;
+
+
+            document
+            .getElementById("next11")
+            .onclick = loadStage12;
+
+
+        });
+
+
+    });
+
 
 }
 loadStage1();
