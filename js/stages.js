@@ -1292,6 +1292,317 @@ function loadStage14(){
 
 
 }
+/* ---------------- STAGE 15 ---------------- */
+
+function loadStage15(){
+
+    currentStage = 15;
+    updateStage();
+
+    mascot("നിന്റെ സിസ്റ്റം പരിശോധിക്കുന്നു... 😈");
+
+
+    stageArea.innerHTML = `
+
+    <div class="stage-box hacker-box">
+
+        <h2>💻 Stage 15 - Secret Scan</h2>
+
+
+        <div id="terminal">
+
+        <p>> Initializing system...</p>
+
+        </div>
+
+
+        <h3 id="scanPercent">
+        0%
+        </h3>
+
+
+        <button 
+        id="continueHack"
+        class="game-btn"
+        style="display:none;">
+
+        Continue 😏
+
+        </button>
+
+
+    </div>
+
+    `;
+
+
+
+    const terminal =
+    document.getElementById("terminal");
+
+
+    const percent =
+    document.getElementById("scanPercent");
+
+
+    const continueBtn =
+    document.getElementById("continueHack");
+
+
+
+    let progress = 0;
+
+
+
+    const messages = [
+
+        "Searching player name...",
+        "Checking courage level...",
+        "Finding fear percentage...",
+        "Analyzing reactions...",
+        "Almost completed..."
+
+    ];
+
+
+
+    let index = 0;
+
+
+
+    const scan = setInterval(()=>{
+
+
+        progress += 20;
+
+
+
+        percent.innerHTML =
+        progress + "%";
+
+
+
+        if(index < messages.length){
+
+
+            terminal.innerHTML +=
+            "<p>> " + messages[index] + "</p>";
+
+
+            index++;
+
+        }
+
+
+
+        if(progress >= 100){
+
+
+            clearInterval(scan);
+
+
+
+            terminal.innerHTML +=
+            "<p>> Scan Completed 😂</p>";
+
+
+
+            setTimeout(()=>{
+
+
+                terminal.innerHTML +=
+                "<p>> Result: Player is brave 🔥</p>";
+
+
+
+                continueBtn.style.display =
+                "inline-block";
+
+
+
+            },1000);
+
+
+
+        }
+
+
+
+    },800);
+
+
+
+
+
+    continueBtn.onclick = function(){
+
+
+        mascot(
+        "നന്നായി ചെയ്തു 🔥"
+        );
+
+
+        loadStage16();
+
+
+    };
+
+
+}
+/* ---------------- STAGE 16 ---------------- */
+
+function loadStage16(){
+
+    currentStage = 16;
+    updateStage();
+
+    mascot("പുറത്തേക്ക് രക്ഷപ്പെടാൻ വഴി കണ്ടെത്തൂ 😏");
+
+
+    stageArea.innerHTML = `
+
+    <div class="stage-box">
+
+        <h2>🌀 Stage 16 - Escape Maze</h2>
+
+        <p>
+        ശരിയായ വഴി കണ്ടെത്തൂ!
+        </p>
+
+
+        <div class="maze">
+
+            <button class="mazeBtn wrong">
+            ❌
+            </button>
+
+            <button class="mazeBtn wrong">
+            ❌
+            </button>
+
+            <button class="mazeBtn correct">
+            🚪
+            </button>
+
+
+            <br>
+
+
+            <button class="mazeBtn wrong">
+            ❌
+            </button>
+
+            <button class="mazeBtn wrong">
+            ❌
+            </button>
+
+            <button class="mazeBtn wrong">
+            ❌
+            </button>
+
+
+            <br>
+
+
+            <button class="mazeBtn wrong">
+            ❌
+            </button>
+
+            <button class="mazeBtn wrong">
+            ❌
+            </button>
+
+            <button class="mazeBtn wrong">
+            ❌
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+    `;
+
+
+
+    const correct =
+    document.querySelector(".correct");
+
+
+    const wrong =
+    document.querySelectorAll(".wrong");
+
+
+
+    correct.onclick = function(){
+
+
+        mascot(
+        "🔥 Escape ചെയ്തു!"
+        );
+
+
+        stageArea.innerHTML = `
+
+        <div class="stage-box">
+
+            <h1>🚪✅</h1>
+
+            <h2>
+            Maze Completed!
+            </h2>
+
+
+            <button 
+            id="stage17Btn"
+            class="game-btn">
+
+            Stage 17 ലേക്ക് പോകാം
+
+            </button>
+
+
+        </div>
+
+        `;
+
+
+
+        document
+        .getElementById("stage17Btn")
+        .onclick =
+        loadStage17;
+
+
+    };
+
+
+
+
+    wrong.forEach(btn=>{
+
+
+        btn.onclick=function(){
+
+
+            mascot(
+            "😂 തെറ്റായ വഴി!"
+            );
+
+
+            alert(
+            "Dead End 😈 വീണ്ടും ശ്രമിക്കൂ"
+            );
+
+
+        };
+
+
+    });
+
+
+}
 loadStage1();
 
 };
